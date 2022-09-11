@@ -1,0 +1,48 @@
+<p>gerercommandes works!</p>
+<br>
+<br>
+<br>
+<br>
+<p>gestion-categories works!</p>
+
+<div class="list row">
+
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">produit</th>
+              <th scope="col">montant</th>
+              <th scope="col">statut</th>
+              <th scope="col">valider/annuler</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let ct of commandes; let i = index">
+           
+                <td >
+                 {{ ct._id }}
+                </td>
+                <td>
+                    {{ ct.produits }}
+                </td>
+                <td>
+                    {{ ct.montant }}
+                </td>
+                <td>
+                    {{ ct.statut }}
+                </td>
+    
+                <td>
+                    <button class="btn btn-success" (click)="valider(ct._id)"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
+                    <button class="btn btn-danger" (click)="annuler(ct._id)">
+                        <i class="fa fa-window-close" aria-hidden="true"></i>
+                    </button>
+                </td>
+            </tr>
+          </tbody>
+       
+
+    </table>
+
+</div>

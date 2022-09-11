@@ -1,0 +1,50 @@
+<br>
+<br>
+<br>
+<br>
+<p>gestion-categories works!</p>
+
+<div class="list row">
+
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">produits</th>
+              <th scope="col">description</th>
+              <th scope="col">prix</th>
+              <th scope="col">qunatite</th>
+              <th scope="col">action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let prd of produits; let i = index">
+                <td>
+                        {{prd._id}}
+                </td>
+                <td class="">
+                    <a routerLink="detailsproduits/{{prd._id}}"> {{ prd.titre }}</a>
+                </td>
+                
+                <td>
+                    {{ prd.description }}
+                </td>
+                <td>
+                    {{ prd.prix }}
+                </td>
+                <td>
+                    {{ prd.quantite }}
+                </td>
+              
+    
+                <td>
+                    <button class="btn btn-danger" (click)="supprimer(prd._id)">supprimer</button>
+                    <button class="btn btn-dark" routerLink="/editerproduit/{{prd._id}}">modifier</button>
+                </td>
+            </tr>
+          </tbody>
+       
+
+    </table>
+
+</div>

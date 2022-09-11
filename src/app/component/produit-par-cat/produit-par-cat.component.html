@@ -1,0 +1,36 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>Produit du cette categories </p>
+
+<button class="btn btn-success" (click)="retourner()">Retour</button>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let prd of produit; let i = index">
+            <div class="card">
+
+                <div class="view overlay">
+                    <img class="card-img-tp" src="http://127.0.0.1:8080/{{prd.produitImage}}" alt={prd.produitImage} height="140px" width="245px" />
+                    <a href="#!">
+                       
+                    </a>
+                </div>
+                <div class="card-body">
+                    
+                    <h4 class="card-title">{{prd.titre}}</h4>
+                    <p class="card-text"></p>
+                    <h4>Prix : {{prd.prix}} TND</h4>
+                    <div>
+                        <a class="btn btn-success btn-block" routerLink="/detailsproduits/{{prd._id}}"><i class="fa fa-eye" aria-hidden="true"></i>
+                        </a>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+</div>

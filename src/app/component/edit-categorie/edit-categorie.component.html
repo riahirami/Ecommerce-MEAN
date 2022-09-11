@@ -1,0 +1,43 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>edit-categorie works!</p>
+<div class="container">
+    <h1>Update categorie</h1>
+    
+    <a routerLink="/gerercategories" class="btn btn-primary">Back</a>
+           
+    <form [formGroup]="form" (ngSubmit)="submit()">
+     
+        <div class="form-group">
+            <label for="title">titre:</label>
+            <input
+                formControlName="titre"
+                id="titre"
+                type="text"
+                [(ngModel)]="categorie.titre"
+                class="form-control">
+            <div *ngIf="f['titre'].touched && f['titre'].invalid" class="alert alert-danger">
+                <div *ngIf="f['titre'].errors && f['titre'].errors['required']">titre is required.</div>
+            </div>
+        </div>
+            
+        <div class="form-group">
+            <label for="body">description</label>
+            <textarea
+                formControlName="description"
+                id="description"
+                type="text"
+                [(ngModel)]="categorie.description"
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['description'].touched && f['description'].invalid" class="alert alert-danger">
+                <div *ngIf="f['description'].errors && f['description'].errors['required']">description is required.</div>
+            </div>
+        </div>
+          
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>

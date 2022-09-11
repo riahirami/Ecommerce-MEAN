@@ -1,0 +1,40 @@
+<br>
+<br>
+<br>
+<br>
+<p>gestion-categories works!</p>
+
+<div class="list row">
+
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">categories</th>
+              <th scope="col">description</th>
+              <th scope="col">action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let ct of categories; let i = index">
+                <td>
+
+                </td>
+                <td class="">
+                    <a routerLink="/cat/{{ct._id}}"> {{ ct.titre }}</a>
+                </td>
+                <td>
+                    {{ ct.titre }}
+                </td>
+    
+                <td>
+                    <button class="btn btn-danger" (click)="supprimer(ct._id)">supprimer</button>
+                    <button class="btn btn-dark" routerLink="editercategorie/{{ct._id}}">modifier</button>
+                </td>
+            </tr>
+          </tbody>
+       
+
+    </table>
+
+</div>

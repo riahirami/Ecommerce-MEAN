@@ -1,0 +1,147 @@
+<div class="body">
+<br>
+<br>
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let prd of produits; let i = index">
+            <div class="card">
+
+                <div class="view overlay">
+                    <img class="card-img-top" src="http://127.0.0.1:8080/{{prd.produitImage}}" alt={{prd.produitImage}} height="140px" width="245px" />
+                    <a href="#!">
+                       
+                    </a>
+                </div>
+                <div class="card-body">
+                    
+                    <h4 class="card-title">{{prd.titre}}</h4>
+                    <p class="card-text"></p>
+                    <h5 *ngIf="prd.categories" class="badge badge-warning text-light" >               
+                        <a routerLink="/cat/{{prd.categories._id}}" >
+                        {{prd.categories.titre}}</a> 
+                        </h5>
+                    <h4>Prix : {{prd.prix}} TND</h4>
+                    <div class="text-center">
+                        
+                        <a class="btn btn-outline-primary" routerLink="/detailsproduits/{{prd._id}}"><i class="fa fa-eye"></i></a>
+                        <a class="btn btn-outline-warning" routerLink="/editerproduit/{{prd._id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-outline-dark text-dark" (click)="addToCart(prd)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    
+    </div>
+
+
+
+
+<section class="container" >
+    <div class="row jistufy-content-center " >
+      <div class="col-12" >
+        <div class="col-12" >
+            
+        <button class="btn btn-lg btn-warning cartbtn " type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa fa-shopping-cart"></i></button>
+              
+          <div class="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style=" width: 550px          ">
+            <div class="offcanvas-header" >
+              <br>
+              <br>
+              <br>
+              <h5 id="offcanvasRightLabel">Panier</h5>
+              
+              <button  type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-bod">
+              <h5>
+               
+                <!-- Produits distincts (totalUniqueItems) | total des produits :(totalItems) -->
+              </h5>
+              <table class="table table-light m-0">
+                <tbody>
+
+            
+                 
+
+                        <tr key=1  *ngFor="let item of items; let i = index ">
+                          <td>
+                            <img style="height:10rem" class="card-img-top" src="http://127.0.0.1:8080/{{item.produitImage}}" alt={{item.produitImage}} height="140px" width="245px" />
+
+                            <!-- <img src="{{item.produitImage}}" style="height:10rem" /> -->
+                          </td>
+
+                          <td>{{item.titre}}</td>
+
+                          <td>{{item.prix}}</td>
+
+                          
+                          <td>
+                            <div class="">
+                                <input
+                      [(ngModel)]="item.qtyTotal"
+                      [ngModelOptions]="{standalone: true}"
+                      min="1"
+                      type="number"
+                      value="{{ item.qtyTotal }}"
+                      name=""
+                      class="form-control"
+                      (change)="changeSubtotal(item ,i)"
+                    />
+                  </div>  
+                             Piéces  </td>
+
+                          <ul class="list-group" style="list-style: none">
+                            <!-- <li><button class="list-group-item list-group-item-success"><span class="fa fa-minus-square"></span></button>
+                            </li>
+                            <li> <button class="list-group-item list-group-item-success"><span class="fa fa-plus-square"></span></button>
+                            </li> -->
+                            <li><button (click)="removeFromCart(item)"  class="list-group-item list-group-item-danger"><span class="fa fa-trash"></span></button>
+                            </li>
+                          </ul>
+                        
+                        </tr>
+
+
+
+
+                </tbody>
+              </table>
+              <div class="col-auto ms-auto">
+                <h2> total :  {{items.length}} produits en panier</h2>
+              </div>
+            </div>
+            <div class="col-auto  mb-2">
+              
+
+              <form class="text-center" >
+                <button  (click)="clearCart(items)"  class="btn btn-danger  ms-2">
+                    Vider panier
+                  </button>
+
+              <button (click)="ajouterCommande(items)" class="btn btn-primary  ms-2">
+                Commander
+              </button>
+        </form>
+            </div>
+          </div>
+      </div>
+    </div>
+    </div>
+
+  </section>
+
+</div>
+</div>

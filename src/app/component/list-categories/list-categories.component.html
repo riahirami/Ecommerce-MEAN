@@ -1,0 +1,18 @@
+
+<div class="list row">
+    
+    <div class="">
+        <ul class="list-group" *ngFor="let ct of categories; let i = index">
+            <li class="list-group-item">
+               <a routerLink="/cat/{{ct._id}}" > {{ ct.titre }}
+               </a>
+            </li>
+           
+        
+           
+            
+        </ul>
+       
+    </div>
+
+</div>

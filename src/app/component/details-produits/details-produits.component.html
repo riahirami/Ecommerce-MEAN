@@ -1,0 +1,55 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="jumbotron">
+<p>Detail du produit :
+    {{produit.titre}}
+</p>
+
+    <br>
+                <div class="container-fluid bg-trasparent" key={produit._id}>
+                    <div class="">
+                        <div class="col">
+                            <div class="card">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button (click)="delete(produit._id)" class="float-end  btn btn-danger">
+                                            <span class="fa fa-trash"></span>
+
+                                      </button>
+                                      <a class="btn btn-dark float-end " routerLink="/editerproduit/{{produit._id}}">
+                                        <span class="fa fa-pencil-square-o"></span>
+                                    </a>
+                                    <div class="col-md-12">
+                                        <img src="http://127.0.0.1:8080/{{produit.produitImage}}" width="100%" height="350px" alt={{produit.produitImage}} class="card-img-to" />
+                                    </div>
+                                 
+                                        <div class="">
+                                            <h2 class="badge badge-primary">{{produit.categories}}</h2><br />
+                                        </div>
+                                        <h3 class="">{{produit.titre}} </h3>
+    
+                                        <p class="card-titl">{{produit.description}}</p>
+                                        <p class="card-titl">Quantite :{{produit.quantite}}</p>
+                                        <br /><br /> 
+                                        <p class=" badge rounded-pill bg-primary">prix : {{produit.prix}} </p>
+                                        <br>
+
+                                       
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+    
+    
+            </div>

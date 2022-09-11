@@ -1,0 +1,115 @@
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>editer produit</h1>
+  
+    <a  routerLink="/accueil" class="btn btn-primary">Retour</a>
+  
+    <form [formGroup]="editproduitForm" (ngSubmit)="submit()">
+  
+      <div class="form-group">
+        <label for="title">Titre</label>
+        <input formControlName="titre" id="titre" type="text" class="form-control"                 
+        [(ngModel)]="produit.titre"
+        >
+        <div *ngIf="f['titre'].touched && f['titre'].invalid" class="alert alert-danger">
+          <div *ngIf="f['titre'].errors && f['titre'].errors['required']">Veuillez ajouter le titre .</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="produitImage">image</label>
+        <input type="file" 
+        (change)=selectImage($event)
+         accept="image/*" 
+         [(ngModel)]="produit.produitImage"
+         class="form-control" id="produitImage"  >
+       
+      </div>
+
+      <div class="form-group">
+        <label for="categories">Categorie</label>
+        <select formControlName="categories" id="categories"
+        [(ngModel)]="produit.categories"
+
+        class="form-control" id="categories">
+            <option
+              *ngFor="let c of listcategories"
+           
+              [value]="c._id"
+            >
+              {{ c.titre }}
+            </option>
+            
+        </select>
+      </div>
+      <!-- <div class="form-group">
+        <label for="categoriesid">categoriesid</label>
+        <select formControlName="categoriesid" id="categoriesid"  class="form-control" id="categoriesid">
+            <option
+              *ngFor="let c of listcategories"
+           
+              [value]="c._id"
+            >
+              {{ c.titre }}
+            </option>
+            
+        </select>
+      </div> -->
+  
+      <div class="form-group">
+        <label for="body">Description</label>
+        <textarea formControlName="description"
+        [(ngModel)]="produit.description"
+
+        id="description" type="text" class="form-control">
+            </textarea>
+        <div *ngIf="f['description'].touched && f['description'].invalid" class="alert alert-danger">
+          <div *ngIf="f['description'].errors && f['description'].errors['required']">veuillez ajouter la description.
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="body">Prix</label>
+        <textarea formControlName="prix"
+        [(ngModel)]="produit.prix"
+
+        id="prix" type="text" class="form-control">
+            </textarea>
+        <div *ngIf="f['prix'].touched && f['prix'].invalid" class="alert alert-danger">
+          <div *ngIf="f['prix'].errors && f['prix'].errors['required']">veuillez ajouter le prix.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="body">Quantite</label>
+        <textarea formControlName="quantite"
+        [(ngModel)]="produit.quantite"
+
+        id="quantite" type="text" class="form-control">
+            </textarea>
+        <div *ngIf="f['quantite'].touched && f['quantite'].invalid" class="alert alert-danger">
+          <div *ngIf="f['quantite'].errors && f['quantite'].errors['required']">veuillez ajouter la quantite.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="body">couleur</label>
+        <textarea formControlName="couleur"
+        [(ngModel)]="produit.couleur"
+        id="couleur" type="text" class="form-control">
+            </textarea>
+        <div *ngIf="f['couleur'].touched && f['couleur'].invalid" class="alert alert-danger">
+          <div *ngIf="f['couleur'].errors && f['couleur'].errors['required']">veuillez ajouter le couleur.
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!editproduitForm.valid">Valider</button>
+    </form>
+  </div>
